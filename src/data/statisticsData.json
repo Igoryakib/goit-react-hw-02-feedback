@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Good",
+        "type": "good",
+        "id": "909r"
+    },
+    {
+        "title": "Neutral",
+        "type": "neutral",
+        "id": "673f"
+    },
+    {
+        "title": "Bad",
+        "type": "bad",
+        "id": "9r20"
+    },
+    {
+        "title": "Total",
+        "id": "364b",
+        "total": "total"
+    },
+    {
+        "title": "Positive feedBack",
+        "id": "127j",
+        "percentageFeedBack": "positiveFeedback"
+    }
+]

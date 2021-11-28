@@ -1,0 +1,17 @@
+[
+    {
+        "title": "good",
+        "id": "657c",
+        "color": "green"
+    },
+    {
+        "title": "neutral",
+        "id": "98e9",
+        "color": "orange"
+    },
+    {
+        "title": "bad",
+        "id": "090f",
+        "color": "red"
+    }
+]
