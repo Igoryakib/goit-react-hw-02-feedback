@@ -1,72 +1,33 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./Statistics.module.scss";
-import FeedbackOptions from "../FeedBackOptions/FeedBackOptions";
 import Notification from "../Notification/Notification";
 
-class Statistics extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
-  static propTypes = {
-    statisticsArray: PropTypes.array.isRequired,
-    btnData: PropTypes.array.isRequired,
-    titleStatistics: PropTypes.string,
-  };
-  handleIncrementFeedBack = (event) => {
-    this.setState((prevState) => {
-      return {
-        [event.target.name]: prevState[event.target.name] + 1,
-      };
-    });
-  };
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+  const {list_item } = styles;
+  return (
+    <div>
+      {total === 0 ? (
+        <Notification title="There is no feedback" />
+      ) : (
+        <ul>
+          <li className={list_item}>Good:{good}</li>
+          <li className={list_item}>Neutral:{neutral}</li>
+          <li className={list_item}>Bad:{bad}</li>
+          <li className={list_item}>Total:{total}</li>
+          <li className={list_item}>PositivePercentage:{positivePercentage}</li>
+        </ul>
+      )}
+    </div>
+  );
+};
 
-  countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
-  };
-
-  countPositiveFeedbackPercentage = () => {
-    return `${Math.round(
-      (this.state.good / this.countTotalFeedback()) * 100
-    )}%`;
-  };
-  render() {
-    const { titleStatistics, statisticsArray, btnData } = this.props;
-    // const { good, neutral, bad } = this.state;
-    const {title_stat, list_item} = styles;
-    return (
-      <>
-        <FeedbackOptions
-          btnArray={btnData}
-          handleFeedBack={this.handleIncrementFeedBack}
-        />
-        <div>
-          <h2 className={title_stat}>{titleStatistics}</h2>
-          {this.countTotalFeedback() === 0 ? (
-            <Notification title="There is no feedback" />
-          ) : (
-            <ul>
-              {statisticsArray.map((item) => {
-                return (
-                  <li className={list_item} key={item.id}>
-                    {item.title}:
-                    {item.type
-                      ? this.state[item.type]
-                      : item.total
-                      ? this.countTotalFeedback()
-                      : item.percentageFeedBack &&
-                        this.countPositiveFeedbackPercentage()}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </div>
-      </>
-    );
-  }
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.string.isRequired,
 }
 
 export default Statistics;
