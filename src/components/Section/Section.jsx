@@ -19,4 +19,4 @@ Section.propTypes = {
     title: PropTypes.string
 };
 
-export default SectionStat;
+export default Section;
