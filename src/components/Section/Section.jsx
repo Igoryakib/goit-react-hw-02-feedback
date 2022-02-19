@@ -2,7 +2,7 @@ import React from "react";
 import styles from './Section.module.scss';
 import PropTypes from "prop-types";
 
-const SectionStat = ({ title, children }) => {
+const Section = ({ title, children }) => {
   const {content_feedback, title_section} = styles;
   return (
     <>
@@ -14,7 +14,7 @@ const SectionStat = ({ title, children }) => {
   );
 };
 
-SectionStat.propTypes = {
+Section.propTypes = {
     children: PropTypes.element.isRequired,
     title: PropTypes.string
 };
