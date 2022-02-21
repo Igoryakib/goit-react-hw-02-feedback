@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <>
         <Section title="Please leave your feedBack">
-          <FeedbackOptions handleFeedBack={this.handleIncrementFeedBack} />
+          <FeedbackOptions handleFeedBack={this.handleIncrementFeedBack} btnArray={Object.keys(this.state)} />
         </Section>
         <Section title="Statistics">
           <Statistics

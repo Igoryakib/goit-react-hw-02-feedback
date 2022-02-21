@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import styles from "./FeedBackOptions.module.scss";
 import classNames from "classnames";
 
-const FeedbackOptions = ({ handleFeedBack }) => {
+const FeedbackOptions = ({ handleFeedBack, btnArray }) => {
   const activeClassnames = (color) => {
     return classNames(button_feedback, {
-      [button_feedback_green]: color === "green",
-      [button_feedback_orange]: color === "orange",
-      [button_feedback_red]: color === "red",
+      [button_feedback_green]: color === "good",
+      [button_feedback_orange]: color === "neutral",
+      [button_feedback_red]: color === "bad",
     });
   };
   const {
@@ -20,25 +20,20 @@ const FeedbackOptions = ({ handleFeedBack }) => {
   } = styles;
   return (
     <ul className={list_buttons}>
-      <li>
-        <button
-          className={activeClassnames("green")}
-          name="good"
-          onClick={handleFeedBack}
-          type="button"
-        >good</button>
-      </li>
-      <li>
-        <button
-          className={activeClassnames("orange")}
-          name="neutral"
-          onClick={handleFeedBack}
-          type="button"
-        >neutral</button>
-      </li>
-      <li>
-      <button className={activeClassnames('red')} name='bad' onClick={handleFeedBack} type="button">bad</button>
-      </li>
+      {btnArray.map((item) => {
+        return (
+          <li>
+            <button
+              className={activeClassnames(item)}
+              name={item}
+              onClick={handleFeedBack}
+              type="button"
+            >
+              {item}
+            </button>
+          </li>
+        );
+      })}
     </ul>
   );
 };
